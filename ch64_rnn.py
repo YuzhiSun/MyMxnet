@@ -71,5 +71,6 @@ def predict_rnn(prefix, num_chars, rnn, params, init_rnn_state,
             output.append(int(Y[0].argmax(axis=1).asscalar()))
     return ''.join([idx_to_char[i] for i in output])
 
-
+predict_rnn('分开', 10, rnn, params, init_rnn_state, num_hiddens, vocab_size,
+            ctx, idx_to_char, char_to_idx)
 
