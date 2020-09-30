@@ -130,13 +130,13 @@ def train_and_predict_rnn(rnn, get_params, init_rnn_state, num_hiddens,
 
 num_epochs, num_steps, batch_size, lr, clipping_theta = 250, 35, 32, 1e2, 1e-2
 pred_period, pred_len, prefixes = 50, 50, ['分开', '不分开']
-
+# 使用随机取样
 # train_and_predict_rnn(rnn, get_params, init_rnn_state, num_hiddens,
 #                       vocab_size, ctx, corpus_indices, idx_to_char,
 #                       char_to_idx, True, num_epochs, num_steps, lr,
 #                       clipping_theta, batch_size, pred_period, pred_len,
 #                       prefixes)
-
+# 使用相邻取样
 train_and_predict_rnn(rnn, get_params, init_rnn_state, num_hiddens,
                       vocab_size, ctx, corpus_indices, idx_to_char,
                       char_to_idx, False, num_epochs, num_steps, lr,
