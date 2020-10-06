@@ -10,9 +10,9 @@ import time
 def to_onehot(X, size):  # 本函数已保存在d2lzh包中方便以后使用
     return [nd.one_hot(x, size) for x in X.T]
 
-X = nd.arange(10).reshape((2, 5))
-inputs = to_onehot(X, vocab_size)
-len(inputs), inputs[0].shape
+# X = nd.arange(10).reshape((2, 5))
+# inputs = to_onehot(X, vocab_size)
+# len(inputs), inputs[0].shape
 
 num_inputs, num_hiddens, num_outputs = vocab_size, 256, vocab_size
 ctx = d2l.try_gpu()
@@ -49,11 +49,11 @@ def rnn(inputs, state, params):
         outputs.append(Y)
     return outputs, (H,)
 
-state = init_rnn_state(X.shape[0], num_hiddens, ctx)
-inputs = to_onehot(X.as_in_context(ctx), vocab_size)
-params = get_params()
-outputs, state_new = rnn(inputs, state, params)
-len(outputs), outputs[0].shape, state_new[0].shape
+# state = init_rnn_state(X.shape[0], num_hiddens, ctx)
+# inputs = to_onehot(X.as_in_context(ctx), vocab_size)
+# params = get_params()
+# outputs, state_new = rnn(inputs, state, params)
+# len(outputs), outputs[0].shape, state_new[0].shape
 
 def predict_rnn(prefix, num_chars, rnn, params, init_rnn_state,
                 num_hiddens, vocab_size, ctx, idx_to_char, char_to_idx):
@@ -71,8 +71,8 @@ def predict_rnn(prefix, num_chars, rnn, params, init_rnn_state,
             output.append(int(Y[0].argmax(axis=1).asscalar()))
     return ''.join([idx_to_char[i] for i in output])
 
-predict_rnn('分开', 10, rnn, params, init_rnn_state, num_hiddens, vocab_size,
-            ctx, idx_to_char, char_to_idx)
+# predict_rnn('分开', 10, rnn, params, init_rnn_state, num_hiddens, vocab_size,
+#             ctx, idx_to_char, char_to_idx)
 
 # 梯度裁剪 防止梯度爆炸
 def grad_clipping(params, theta, ctx):
